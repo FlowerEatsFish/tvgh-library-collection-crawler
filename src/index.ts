@@ -7,6 +7,11 @@ interface itemType {
   url: string,
 };
 
+interface fetchDataType {
+  data: string,
+  url: string,
+};
+
 const libraryList = [
   "VGHTPE", // 臺北總院
   "GANDAU", // 關渡分院
@@ -24,24 +29,25 @@ const isItemListResult = (htmlCode: string): boolean => htmlCode.includes('class
 const isItemResult = (htmlCode: string): boolean => htmlCode.includes('class="detail_main_wrapper"');
 
 const getItemDetail = async (url: string): Promise<object> => {
-  const htmlCodeAfterFetch: string = await fetchSearchResult(url);
-  const itemDetail: object = await parserItem(htmlCodeAfterFetch);
-  return itemDetail;
+  const htmlCodeAfterFetch: fetchDataType = await fetchSearchResult(url);
+  const itemDetail: object = await parserItem(htmlCodeAfterFetch.data);
+  return { ...itemDetail, url: url };
 };
 
 const buildData = async (keyword, page: number = 1, library_numbering: number = 0): Promise<object> => {
-  const htmlCodeAfterFetch: string = await fetchSearchResult(null, keyword, page, libraryList[library_numbering]);
-  if (isItemListResult(htmlCodeAfterFetch)) {
+  const htmlCodeAfterFetch: fetchDataType = await fetchSearchResult(null, keyword, page, libraryList[library_numbering]);
+  console.log(htmlCodeAfterFetch.url);
+  if (isItemListResult(htmlCodeAfterFetch.data)) {
     console.log("isItemListResult");
-    const itemList: itemType[] = await parserItemList(htmlCodeAfterFetch);
+    const itemList: itemType[] = await parserItemList(htmlCodeAfterFetch.data);
     const itemListWithDetail: object[] = await Promise.all(itemList.map(value => getItemDetail(value.url)));
     console.log(itemListWithDetail);
     return itemListWithDetail;
-  } else if (isItemResult(htmlCodeAfterFetch)) {
+  } else if (isItemResult(htmlCodeAfterFetch.data)) {
     console.log("isItemResult");
-    const itemWithDetail: object = await parserItem(htmlCodeAfterFetch);
-    console.log(itemWithDetail);
-    return itemWithDetail;
+    const itemWithDetail: object = await parserItem(htmlCodeAfterFetch.data);
+    console.log({ ...itemWithDetail, url: htmlCodeAfterFetch.url });
+    return { ...itemWithDetail, url: htmlCodeAfterFetch.url };
   } else {
     console.log("noResult");
     return null;

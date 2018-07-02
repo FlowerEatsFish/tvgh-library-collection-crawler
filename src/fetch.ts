@@ -1,5 +1,10 @@
 import Axios from "axios";
 
+interface dataType {
+  data: string,
+  url: string,
+};
+
 const setKeywordToInsertUrl = (keyword: string): string => {
   // To remove special characters
   let temp: string = keyword.replace(/[\~\!\@\#\$\%\^\&\*\(\)\_\+\-\=\}\{\[\]\|\"\'\:\;\?\/\.\,\<\>\}\\]/gi, " ");
@@ -36,7 +41,7 @@ const fetchFullHtmlCode = (url: string): Promise<string> => {
   })
 }
 
-const buildData = async (url: string, keyword: string = null, page: number = null, library: string = null): Promise<string> => {
+const buildData = async (url: string, keyword: string = null, page: number = null, library: string = null): Promise<dataType> => {
   let tempUrl = "";
   if (url) {
     tempUrl = url;
@@ -44,7 +49,7 @@ const buildData = async (url: string, keyword: string = null, page: number = nul
     tempUrl = await setUrl(keyword, page, library);
   }
   const data: string = await fetchFullHtmlCode(tempUrl);
-  return data;
+  return { data: data, url: tempUrl };
 };
 
 export default buildData;
