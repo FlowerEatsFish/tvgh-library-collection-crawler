@@ -1,36 +1,39 @@
-interface itemType {
-  title: string,
-  url: string,
-};
+/**
+ * To parse the results when the fetcher got two or more data.
+ */
 
-const getItemTitle = (htmlCode: string): string => {
+export interface IItemType {
+  title: string;
+  url: string;
+}
+
+const getItemTitle: Function = (htmlCode: string): string => {
   let result: string = htmlCode.match(/\stitle="[\w\W]*?"/gi)[0];
-  result = result.replace(/\stitle="([\w\W]*?)"/, "$1");
+  result = result.replace(/\stitle="([\w\W]*?)"/, '$1');
+
   return result;
 };
 
-const getItemUrl = (htmlCode: string): string => {
+const getItemUrl: Function = (htmlCode: string): string => {
   let result: string = htmlCode.match(/ent:\$002f\$002fSD_ILS\$002f0\$002fSD_ILS:\d*/gi)[0];
   result = `http://tghtpe.ent.sirsidynix.net/client/zh_TW/vgh/search/detailnonmodal/${result}/one`;
-  return result;
-}
 
-const getItem = (htmlCode: string): itemType => ({
+  return result;
+};
+
+const getItem: Function = (htmlCode: string): IItemType => ({
   title: getItemTitle(htmlCode),
-  url: getItemUrl(htmlCode),
+  url: getItemUrl(htmlCode)
 });
 
-const splitHtmlCode = (htmlCode: string): string[] => {
-  const result = htmlCode.match(/<div class="displayDetailLink">[\w\W]*?<\/div>/gi);
-  return result;
-}
+const splitHtmlCode: Function = (htmlCode: string): string[] => htmlCode.match(/<div class="displayDetailLink">[\w\W]*?<\/div>/gi);
 
-const buildItemList = async (htmlCode): Promise<itemType[]> => {
+export const itemListParser: Function = async (htmlCode: string): Promise<IItemType[]> => {
   // To split code from string into array by special tag
   const itemListWithCode: string[] = await splitHtmlCode(htmlCode);
   // To build up data we want
-  const itemList: itemType[] = await Promise.all(itemListWithCode.map(value => getItem(value)));
+  // tslint:disable-next-line:no-unnecessary-local-variable
+  const itemList: IItemType[] = await Promise.all(itemListWithCode.map((value: string) => getItem(value)));
+
   return itemList;
 };
-
-export default buildItemList;

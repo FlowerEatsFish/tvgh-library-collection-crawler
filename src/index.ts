@@ -1,57 +1,72 @@
-import fetchSearchResult from "./fetch";
-import parserItemList from "./item-list-parser";
-import parserItem from "./item-parser";
+/**
+ * Main control for this library.
+ */
 
-interface itemType {
-  title: string,
-  url: string,
-};
+import { collectionFetch, IFetchResult } from './fetch';
+import { IItemType, itemListParser } from './item-list-parser';
+import { IDetailType, itemParser } from './item-parser';
 
-interface fetchDataType {
-  data: string,
-  url: string,
-};
+interface IDetailTypeWithUrl extends IDetailType {
+  url: string;
+}
 
-const libraryList = [
-  "VGHTPE", // 臺北總院
-  "GANDAU", // 關渡分院
-  "FLVH", // 鳳林分院
-  "SAVH", // 蘇澳分院
-  "TYVH", // 桃園分院
-  "VHCT", // 新竹分院
-  "VHTT", // 臺東分院
-  "VHYL", // 玉里分院
-  "YSVH", // 員山分院
+const libraryList: string[] = [
+  'VGHTPE', // 臺北總院
+  'GANDAU', // 關渡分院
+  'FLVH', // 鳳林分院
+  'SAVH', // 蘇澳分院
+  'TYVH', // 桃園分院
+  'VHCT', // 新竹分院
+  'VHTT', // 臺東分院
+  'VHYL', // 玉里分院
+  'YSVH' // 員山分院
 ];
 
-const isItemListResult = (htmlCode: string): boolean => htmlCode.includes('class="displayDetailLink"');
+const isItemListResult: Function = (htmlCode: string): boolean => htmlCode.includes('class="displayDetailLink"');
 
-const isItemResult = (htmlCode: string): boolean => htmlCode.includes('class="detail_main_wrapper"');
+const isItemResult: Function = (htmlCode: string): boolean => htmlCode.includes('class="detail_main_wrapper"');
 
-const getItemDetail = async (url: string): Promise<object> => {
-  const htmlCodeAfterFetch: fetchDataType = await fetchSearchResult(url);
-  const itemDetail: object = await parserItem(htmlCodeAfterFetch.data);
+const getItemDetail: Function = async (url: string): Promise<IDetailTypeWithUrl> => {
+  const htmlCodeAfterFetch: IFetchResult = await collectionFetch(url);
+  const itemDetail: IDetailType = await itemParser(htmlCodeAfterFetch.data);
+
   return { ...itemDetail, url: url };
 };
 
-const buildData = async (keyword, page: number = 1, library_numbering: number = 0): Promise<object> => {
-  const htmlCodeAfterFetch: fetchDataType = await fetchSearchResult(null, keyword, page, libraryList[library_numbering]);
-  console.log(htmlCodeAfterFetch.url);
+export const tvghLibraryCollection: Function = async (url: string, keyword: string, page: number = 1, libraryNumbering: number = 0): Promise<object> => {
+  const htmlCodeAfterFetch: IFetchResult = await collectionFetch(url, keyword, page, libraryList[libraryNumbering]);
+  console.log(`>>> You search data using ${htmlCodeAfterFetch.url}`);
+  // to check where the HTML code is from and do next step
   if (isItemListResult(htmlCodeAfterFetch.data)) {
-    console.log("isItemListResult");
-    const itemList: itemType[] = await parserItemList(htmlCodeAfterFetch.data);
-    const itemListWithDetail: object[] = await Promise.all(itemList.map(value => getItemDetail(value.url)));
+    // to do here if the HTML code contains two or more results
+    console.log('>>> The HTML code contains two or more results.');
+    const itemList: IItemType[] = await itemListParser(htmlCodeAfterFetch.data);
+    const itemListWithDetail: IDetailTypeWithUrl[] = await Promise.all(itemList.map((value: IItemType) => getItemDetail(value.url)));
     console.log(itemListWithDetail);
+
     return itemListWithDetail;
+
   } else if (isItemResult(htmlCodeAfterFetch.data)) {
-    console.log("isItemResult");
-    const itemWithDetail: object = await parserItem(htmlCodeAfterFetch.data);
+    // to do here if the HTML code only contains one result
+    console.log('>>> The HTML code only contains one result.');
+    const itemWithDetail: IDetailType = await itemParser(htmlCodeAfterFetch.data);
     console.log({ ...itemWithDetail, url: htmlCodeAfterFetch.url });
+
     return { ...itemWithDetail, url: htmlCodeAfterFetch.url };
+
   } else {
-    console.log("noResult");
+    // to do here if no result is got from the HTML code
+    console.log('>>> No result is got from the HTML code.');
+
     return null;
   }
-}
+};
 
-export default buildData;
+// demo
+tvghLibraryCollection(null, '哈利波特')
+  .then(() => {
+    tvghLibraryCollection(null, '長恨歌密碼')
+      .then(() => {
+        tvghLibraryCollection(null, '我沒有資料');
+      });
+  });
