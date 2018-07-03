@@ -1,21 +1,16 @@
 {
   "compilerOptions": {
-    "lib": [
-      "es5",
-      "es2015",
-      "dom",
-      "scripthost"
-    ],
+    "lib": ["es5", "es2015", "dom", "scripthost"],
+    "baseUrl": ".",
+    "paths": {
+      "*": ["src/*"]
+    },
     "module": "commonjs",
     "noImplicitAny": false,
     "outDir": "./dist/",
     "sourceMap": false,
     "target": "es2015"
   },
-  "exclude": [
-    "node_modules",
-  ],
-  "include": [
-    "src/**/*"
-  ]
+  "exclude": ["node_modules"],
+  "include": ["src/**/*"],
 }
