@@ -1,14 +1,15 @@
 const path = require('path');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   entry: {
     'tvgh-library-collection': './src/index.ts',
   },
   output: {
     path: path.join(__dirname, '/dist'),
     publicPath: 'dist/',
-    filename: './[name].development.js',
+    filename: './[name].min.js',
     library: 'tvgh-library-collection',
     libraryTarget: 'umd'
   },
@@ -23,5 +24,16 @@ module.exports = {
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js']
+  },
+  optimization: {
+    minimizer: [
+      new UglifyJSPlugin({
+        uglifyOptions: {
+          compress: {
+            drop_console: true,
+          }
+        }
+      })
+    ]
   }
 };
