@@ -29,7 +29,6 @@ const setUrl = (keyword: string, page: number, library: string): string => {
   const tempPage: number = setPageToInsertUrl(page);
   const tempLibrary: string = setLibraryToInserUrl(library);
   const url: string = `http://tghtpe.ent.sirsidynix.net/client/zh_TW/vgh/search/results?qu=${tempKeyword}&rw=${tempPage}${tempLibrary}`;
-  console.log(url);
   return url;
 };
 

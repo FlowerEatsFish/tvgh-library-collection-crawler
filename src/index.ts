@@ -54,7 +54,4 @@ const buildData = async (keyword, page: number = 1, library_numbering: number = 
   }
 }
 
-const keywords = ["哈利波特", "長恨歌密碼", "我沒有資料"];
-keywords.map((value: string) => {
-  buildData(value);
-});
+export default buildData;

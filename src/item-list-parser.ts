@@ -22,8 +22,6 @@ const getItem = (htmlCode: string): itemType => ({
 
 const splitHtmlCode = (htmlCode: string): string[] => {
   const result = htmlCode.match(/<div class="displayDetailLink">[\w\W]*?<\/div>/gi);
-  console.log("splitHtmlCode");
-  console.log(result);
   return result;
 }
 
