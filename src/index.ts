@@ -2,9 +2,9 @@
  * Main control for this library.
  */
 
-import { collectionFetch, IFetchResult } from './fetch';
 import { IItemType, itemListParser } from './item-list-parser';
 import { IDetailType, itemParser } from './item-parser';
+import { collectionFetch, IFetchResult } from './vgh-collection-fetch';
 
 interface IDetailTypeWithUrl extends IDetailType {
   url: string;
