@@ -33,8 +33,8 @@ const getItemDetail: Function = async (url: string): Promise<IDetailTypeWithUrl>
   return { ...itemDetail, url: url };
 };
 
-export const tvghLibraryCollection: Function = async (url: string, keyword: string, page: number = 1, libraryNumbering: number = 0): Promise<object> => {
-  const htmlCodeAfterFetch: IFetchResult = await collectionFetch(url, keyword, page, libraryList[libraryNumbering]);
+const tvghLibraryCollection: Function = async (keyword: string, page: number = 1, libraryNumbering: number = 0): Promise<object> => {
+  const htmlCodeAfterFetch: IFetchResult = await collectionFetch(null, keyword, page, libraryList[libraryNumbering]);
   console.log(`>>> You search data using ${htmlCodeAfterFetch.url}`);
   // to check where the HTML code is from and do next step
   if (isItemListResult(htmlCodeAfterFetch.data)) {
@@ -62,11 +62,4 @@ export const tvghLibraryCollection: Function = async (url: string, keyword: stri
   }
 };
 
-// demo
-tvghLibraryCollection(null, '哈利波特')
-  .then(() => {
-    tvghLibraryCollection(null, '長恨歌密碼')
-      .then(() => {
-        tvghLibraryCollection(null, '我沒有資料');
-      });
-  });
+export default tvghLibraryCollection;
