@@ -10,6 +10,7 @@ export interface IDetailType {
   pub_year: string;
   pub_place: string;
   pub_info: string;
+  issn: string;
   shape: string;
   collection: object[]|null;
 }
@@ -100,6 +101,7 @@ export const itemParser: Function = async (htmlCode: string): Promise<IDetailTyp
   title: getInfoByTag(htmlCode, 'INITIAL_TITLE_SRCH'),
   author: getInfoByTag(htmlCode, 'INITIAL_AUTHOR_SRCH'),
   isbn: getInfoByTag(htmlCode, 'ISBN'),
+  issn: getInfoByTag(htmlCode, 'ISSN'),
   edition: getInfoByTag(htmlCode, 'EDITION'),
   pub_year: getInfoByTag(htmlCode, 'PUBDATE_YEAR'),
   pub_place: getInfoByTag(htmlCode, 'PUBPLACE'),
