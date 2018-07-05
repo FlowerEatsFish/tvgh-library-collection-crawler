@@ -62,4 +62,5 @@ const tvghLibraryCollection: Function = async (keyword: string, page: number = 1
   }
 };
 
+// tslint:disable-next-line:no-default-export
 export default tvghLibraryCollection;
