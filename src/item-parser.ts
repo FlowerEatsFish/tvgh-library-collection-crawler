@@ -20,6 +20,7 @@ interface ICollectionType {
   special_number: string;
   barcode: string;
   call_number: string;
+  is_flow: boolean;
   status: string;
 }
 
@@ -39,13 +40,36 @@ const removeHtmlTag: Function = (htmlCode: string): string => {
 const getCollection: Function = (htmlCode: string): ICollectionType => {
   const result: string[] = htmlCode.match(/<td>[\w\W]*?<\/td>/gi);
 
+  if (result.length === 6) {
+    return ({
+      library: removeHtmlTag(result[0]),
+      data_type: removeHtmlTag(result[1]),
+      special_number: removeHtmlTag(result[2]),
+      barcode: removeHtmlTag(result[3]),
+      call_number: removeHtmlTag(result[4]),
+      is_flow: true,
+      status: removeHtmlTag(result[5])
+    });
+  } else if (result.length === 4) {
+    return ({
+      library: removeHtmlTag(result[0]),
+      data_type: null,
+      special_number: null,
+      barcode: null,
+      call_number: removeHtmlTag(result[2]),
+      is_flow: false,
+      status: removeHtmlTag(result[1])
+    });
+  }
+
   return ({
-    library: removeHtmlTag(result[0]),
-    data_type: removeHtmlTag(result[1]),
-    special_number: removeHtmlTag(result[2]),
-    barcode: removeHtmlTag(result[3]),
-    call_number: removeHtmlTag(result[4]),
-    status: removeHtmlTag(result[5])
+    library: null,
+    data_type: null,
+    special_number: null,
+    barcode: null,
+    call_number: null,
+    is_flow: false,
+    status: null
   });
 };
 
