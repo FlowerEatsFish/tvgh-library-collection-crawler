@@ -1,5 +1,7 @@
-const path = require('path');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const { BannerPlugin } = require('webpack');
+const path = require('path');
+const packageInfo = require('./package.json');
 
 module.exports = {
   mode: 'production',
@@ -25,6 +27,11 @@ module.exports = {
   resolve: {
     extensions: ['.tsx', '.ts', '.js']
   },
+  plugins: [
+    new BannerPlugin({
+      banner: `Repository: ${packageInfo.name} | Version: ${packageInfo.version} | Author: ${packageInfo.author} | License: ${packageInfo.license}`,
+    }),
+  ],
   optimization: {
     minimizer: [
       new UglifyJSPlugin({
