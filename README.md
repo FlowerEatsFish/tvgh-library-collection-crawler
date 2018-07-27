@@ -1,4 +1,4 @@
-# Taipei Veterans General Hospital Medical Library Collection API
+# Unofficial Taipei Veterans General Hospital Medical Library Collection API
 
 ## Requirements
 
@@ -60,6 +60,8 @@
   >>> You search data using keyword "no-result-as-example".
   >>> You search data using http://tghtpe.ent.sirsidynix.net/client/zh_TW/vgh/search/results?qu=no%20result%20as%20example&rw=0&lm=VGHTPE
   >>> No result is got from the HTML code.
+
+  null
   ```
 
 ## API documentation
@@ -71,7 +73,7 @@
 
   const result = TvghLibraryCollection(
     keyword, // string. Necessary.
-             //if you configs it as null, it will get an error.
+             //If you configs it as null, it will get an error.
     page, // number. Positive integer. Default: 1.
           // Every page only shows maximum 12 results.
     libraryNumbering // number. Integer and the range from 0 to 7 are valid. Default: 0.

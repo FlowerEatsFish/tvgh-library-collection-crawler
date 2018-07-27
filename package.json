@@ -1,7 +1,7 @@
 {
   "name": "api.tvgh-library-collection",
   "version": "1.0.0",
-  "description": "Taipei Veterans General Hospital Medical Library Collection API",
+  "description": "Unofficial Taipei Veterans General Hospital Medical Library Collection API",
   "main": "index.js",
   "scripts": {
     "start": "node ./dist/demo.js",
@@ -14,7 +14,9 @@
     "url": "git+https://github.com/FlowerEatFish/api.tvgh-library-collection.git"
   },
   "keywords": [
-    "typescript"
+    "api",
+    "typescript",
+    "web-crawler"
   ],
   "author": "FlowerEatFish",
   "license": "GPL-3.0",
@@ -23,11 +25,11 @@
   },
   "homepage": "https://github.com/FlowerEatFish/api.tvgh-library-collection#readme",
   "dependencies": {
-    "axios": "^0.18.0",
-    "tslint": "^5.10.0"
+    "axios": "^0.18.0"
   },
   "devDependencies": {
     "ts-loader": "^4.4.2",
+    "tslint": "^5.10.0",
     "tslint-microsoft-contrib": "^5.0.3",
     "typescript": "^2.9.2",
     "uglifyjs-webpack-plugin": "^1.2.7",

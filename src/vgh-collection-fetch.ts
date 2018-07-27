@@ -1,5 +1,5 @@
 /**
- * TO fetch data via tghtpe.ent.sirsidynix.net.
+ * To fetch data via tghtpe.ent.sirsidynix.net.
  */
 
 import axios, { AxiosError, AxiosResponse } from 'axios';
