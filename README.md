@@ -12,7 +12,7 @@
 
   ```shell
   # To download the files and install packages.
-  $ git clone https://github.com/FlowerEatFish/api.tvgh-library-collection
+  $ git clone https://github.com/FlowerEatFish/api.tvgh-library-collection.git
   $ cd api.tvgh-library-collection
   $ npm install
 
@@ -105,18 +105,18 @@
     pub_info: string or null,
     shape: string or null,
     collection: object[]
-    [
-      {
-        library: string,
-        data_type: string or null,
-        special_number: string or null,
-        barcode: string or null,
-        call_number: string or null,
-        is_flow: boolean,
-        status: '正在查詢...' or null // You always get this result because the text is pre-rendering.
-      },
-      ...
-    ],
+      [
+        {
+          library: string,
+          data_type: string or null,
+          special_number: string or null,
+          barcode: string or null,
+          call_number: string or null,
+          is_flow: boolean,
+          status: '正在查詢...' or null // You always get this result because the text is pre-rendering.
+        },
+        { ... }, { ... }, ...
+      ],
     url: string
   };
 
