@@ -1,5 +1,5 @@
 {
-  "name": "api.tvgh-library-collection",
+  "name": "tvgh-library-collection-api",
   "version": "1.0.0",
   "description": "Unofficial Taipei Veterans General Hospital Medical Library Collection API",
   "main": "index.js",
@@ -11,19 +11,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/FlowerEatFish/api.tvgh-library-collection.git"
+    "url": "git+https://github.com/FlowerEatFish/tvgh-library-collection-api.git"
   },
   "keywords": [
     "api",
     "typescript",
     "web-crawler"
   ],
-  "author": "FlowerEatFish",
+  "author": "Eating-Fish FLower",
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/FlowerEatFish/api.tvgh-library-collection/issues"
+    "url": "https://github.com/FlowerEatFish/tvgh-library-collection-api/issues"
   },
-  "homepage": "https://github.com/FlowerEatFish/api.tvgh-library-collection#readme",
+  "homepage": "https://github.com/FlowerEatFish/tvgh-library-collection-api#readme",
   "dependencies": {
     "axios": "^0.18.0"
   },

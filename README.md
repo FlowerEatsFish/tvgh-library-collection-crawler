@@ -12,8 +12,8 @@
 
   ```shell
   # To download the files and install packages.
-  $ git clone https://github.com/FlowerEatFish/api.tvgh-library-collection.git
-  $ cd api.tvgh-library-collection
+  $ git clone https://github.com/FlowerEatFish/tvgh-library-collection-api.git
+  $ cd tvgh-library-collection-api
   $ npm install
 
   # To run a demo.
@@ -69,9 +69,9 @@
 ### Input parameters you want to search for information
 
   ```js
-  import TvghLibraryCollection from 'tvgh-library-collection.development'; // Here uses development mode as an example
+  import TvghLibraryCollectionApi from 'tvgh-library-collection-api.development'; // Here uses development mode as an example
 
-  const result = TvghLibraryCollection(
+  const result = TvghLibraryCollectionApi(
     keyword, // string. Necessary.
              //If you configs it as null, it will get an error.
     page, // number. Positive integer. Default: 1.

@@ -5,13 +5,13 @@ const packageInfo = require('./package.json');
 module.exports = {
   mode: 'development',
   entry: {
-    'tvgh-library-collection': './src/index.ts',
+    'tvgh-library-collection-api': './src/index.ts',
   },
   output: {
     path: path.join(__dirname, '/dist'),
     publicPath: 'dist/',
     filename: './[name].development.js',
-    library: 'tvgh-library-collection',
+    library: 'tvgh-library-collection-api',
     libraryTarget: 'umd'
   },
   module: {
