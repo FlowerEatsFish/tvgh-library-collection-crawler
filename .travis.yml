@@ -1,0 +1,28 @@
+language: node_js
+
+node_js:
+  - 6
+  - 8
+  - 10
+
+os:
+  - linux
+  - osx
+
+branches:
+  only:
+    - master
+    - develop
+
+notifications:
+  email: false
+
+before_script:
+  - npm list -g --depth=0
+  - npm list --depth=0
+
+script:
+  - npm run lint
+  - npm run build:dev
+  - npm run build:prod
+  - npm start

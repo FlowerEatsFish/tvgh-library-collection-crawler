@@ -8,7 +8,7 @@
     "build": "tsc -p ./tsconfig.json",
     "build:dev": "NODE_ENV=development webpack",
     "build:prod": "NODE_ENV=production webpack",
-    "lint": "if eslint . -f stylish --ext .js --ext .ts; then echo '\\033[1;32m✔ SUCCESS: Lint perfect'; else echo '\\033[1;31m✖ FAILURE: Please check the problems as above and fix it' && exit 1; fi"
+    "lint": "eslint . -f stylish --ext .js --ext .ts"
   },
   "repository": {
     "type": "git",
