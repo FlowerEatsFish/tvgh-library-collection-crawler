@@ -13,7 +13,7 @@ branches:
     - master
     - develop
 
-stack: node $env:nodejs_version
+stack: node $nodejs_version
 
 install:
   - npm install
