@@ -17,10 +17,6 @@ branches:
 notifications:
   email: false
 
-before_script:
-  - npm list -g --depth=0
-  - npm list --depth=0
-
 script:
   - npm run lint
   - npm run build:dev

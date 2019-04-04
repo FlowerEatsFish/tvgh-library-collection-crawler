@@ -55,7 +55,7 @@ const runBeforeWebpack = () => {
     case DEVELOPMENT:
       return commonConfig;
     case PRODUCTION:
-      return { ...commonConfig, ...prodConfig };
+      return Object.assign({}, commonConfig, prodConfig);
     default:
       throw new Error(`process.env.NODE_ENV does NOT match with "${DEVELOPMENT}" or "${PRODUCTION}".`);
   }
