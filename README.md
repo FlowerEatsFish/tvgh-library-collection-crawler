@@ -1,5 +1,16 @@
 # Unofficial Taipei Veterans General Hospital Medical Library Collection API
 
+[![Travis-CI status](https://travis-ci.com/FlowerEatFish/tvgh-library-collection-api.svg?branch=master)](https://travis-ci.com/FlowerEatFish/tvgh-library-collection-api/builds)
+[![AppVeyor status](https://ci.appveyor.com/api/projects/status/aeiv3t9fajpgiabc/branch/master?svg=true)](https://ci.appveyor.com/project/FlowerEatFish/tvgh-library-collection-api/history)
+[![Code style](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+
+- [Unofficial Taipei Veterans General Hospital Medical Library Collection API](#unofficial-taipei-veterans-general-hospital-medical-library-collection-api)
+  - [Requirements](#requirements)
+  - [Demo](#demo)
+  - [API documentation](#api-documentation)
+    - [Input parameters you want to search for information](#input-parameters-you-want-to-search-for-information)
+    - [Output results you get from input parameters](#output-results-you-get-from-input-parameters)
+
 ## Requirements
 
 - This construct uses Async/Await methods, so you need to run [polyfill.js](https://polyfill.io/v2/docs/) first.
