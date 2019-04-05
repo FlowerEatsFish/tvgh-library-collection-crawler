@@ -6,16 +6,19 @@ module.exports = {
     '^.+\\.tsx?$': 'ts-jest'
   },
   testPathIgnorePatterns: [
-    'node_modules',
-    'build',
-    'dist'
+    '<rootDir>/node_modules/',
+    '<rootDir>/build/',
+    '<rootDir>/dist/'
   ],
   collectCoverageFrom: [
-    'src/**/*.ts',
-    '!src/demo.ts'
+    '<rootDir>/src/**/*.ts',
+    '!<rootDir>/src/demo.ts'
+  ],
+  testMatch: [
+    '<rootDir>/test/**/*.ts',
+    '<rootDir>/test/**/*.tsx'
   ],
   testEnvironment: 'node',
-  testRegex: 'test/.+\\.tsx?$',
   moduleFileExtensions: [
     'ts',
     'tsx',
