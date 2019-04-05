@@ -2,7 +2,9 @@
 
 [![Travis-CI status](https://travis-ci.com/FlowerEatFish/tvgh-library-collection-api.svg?branch=master)](https://travis-ci.com/FlowerEatFish/tvgh-library-collection-api/builds)
 [![AppVeyor status](https://ci.appveyor.com/api/projects/status/aeiv3t9fajpgiabc/branch/master?svg=true)](https://ci.appveyor.com/project/FlowerEatFish/tvgh-library-collection-api/history)
+[![Codecov status](https://codecov.io/gh/FlowerEatFish/tvgh-library-collection-api/branch/master/graph/badge.svg)](https://codecov.io/gh/FlowerEatFish/tvgh-library-collection-api/commits)
 [![Code style](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![License GPLv3](https://img.shields.io/badge/license-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 - [Unofficial Taipei Veterans General Hospital Medical Library Collection API](#unofficial-taipei-veterans-general-hospital-medical-library-collection-api)
   - [Requirements](#requirements)
