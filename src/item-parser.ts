@@ -2,7 +2,7 @@
  * To parse the results when the fetcher got one data.
  */
 
-export interface IDetailType {
+export interface DetailType {
   title: string;
   author: string;
   isbn: string;
@@ -12,10 +12,10 @@ export interface IDetailType {
   pub_info: string;
   issn: string;
   shape: string;
-  collection: object[] | null;
+  collection: CollectionType[] | null;
 }
 
-interface ICollectionType {
+interface CollectionType {
   library: string | null;
   data_type: string | null;
   special_number: string | null;
@@ -38,7 +38,7 @@ const removeHtmlTag: Function = (htmlCode: string): string => {
   return result;
 };
 
-const getCollection: Function = (htmlCode: string): ICollectionType => {
+const getCollection: Function = (htmlCode: string): CollectionType => {
   const result: string[] | null = htmlCode.match(/<td>[\w\W]*?<\/td>/gi);
 
   if (result != null) {
@@ -76,10 +76,10 @@ const getCollection: Function = (htmlCode: string): ICollectionType => {
   });
 };
 
-const getAllCollection: Function = async (htmlCode: string): Promise<object[]|null> => {
+const getAllCollection: Function = async (htmlCode: string): Promise<CollectionType[]|null> => {
   const result: string[] | null = htmlCode.match(/<tr class="detailItemsTableRow ">[\w\W]*?<\/tr>/gi);
   if (result != null) {
-    const statusList: object[] = await Promise.all(result.map((value: string): object => getCollection(value)));
+    const statusList: CollectionType[] = await Promise.all(result.map((value: string): CollectionType => getCollection(value)));
 
     return statusList;
   }
@@ -97,7 +97,7 @@ const getInfoByTag: Function = (htmlCode: string, tag: string): string|null => {
   return null;
 };
 
-export const itemParser: Function = async (htmlCode: string): Promise<IDetailType> => ({
+export const itemParser: Function = async (htmlCode: string): Promise<DetailType> => ({
   title: getInfoByTag(htmlCode, 'INITIAL_TITLE_SRCH'),
   author: getInfoByTag(htmlCode, 'INITIAL_AUTHOR_SRCH'),
   isbn: getInfoByTag(htmlCode, 'ISBN'),

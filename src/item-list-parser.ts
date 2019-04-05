@@ -2,7 +2,7 @@
  * To parse the results when the fetcher got two or more data.
  */
 
-export interface IItemType {
+export interface ItemType {
   title: string;
   url: string;
 }
@@ -25,18 +25,18 @@ const getItemUrl: Function = (htmlCode: string): string | null => {
   return null;
 };
 
-const getItem: Function = (htmlCode: string): IItemType => ({
+const getItem: Function = (htmlCode: string): ItemType => ({
   title: getItemTitle(htmlCode),
   url: getItemUrl(htmlCode)
 });
 
 const splitHtmlCode: Function = (htmlCode: string): string[] | null => htmlCode.match(/<div class="displayDetailLink">[\w\W]*?<\/div>/gi);
 
-export const itemListParser: Function = async (htmlCode: string): Promise<IItemType[]> => {
+export const itemListParser: Function = async (htmlCode: string): Promise<ItemType[]> => {
   // To split code from string into array by special tag
   const itemListWithCode: string[] = await splitHtmlCode(htmlCode);
   // To build up data we want
-  const itemList: IItemType[] = await Promise.all(itemListWithCode.map((value: string): IItemType => getItem(value)));
+  const itemList: ItemType[] = await Promise.all(itemListWithCode.map((value: string): ItemType => getItem(value)));
 
   return itemList;
 };

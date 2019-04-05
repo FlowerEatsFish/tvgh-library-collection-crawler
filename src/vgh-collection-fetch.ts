@@ -4,7 +4,7 @@
 
 import axios, { AxiosError, AxiosResponse } from 'axios';
 
-export interface IFetchResult {
+export interface FetchResult {
   data: string;
   url: string;
 }
@@ -55,7 +55,7 @@ const setUrlFollowParameter: Function = async (url: string, keyword: string, pag
   return combineUrl;
 };
 
-export const collectionFetch: Function = async (url: string, keyword: string | null = null, page: number | null = null, library: string | null = null): Promise<IFetchResult> => {
+export const collectionFetch: Function = async (url: string, keyword: string | null = null, page: number | null = null, library: string | null = null): Promise<FetchResult> => {
   const fullUrl: string = await setUrlFollowParameter(url, keyword, page, library);
   const data: string = await fetchFullHtmlCode(fullUrl);
 
