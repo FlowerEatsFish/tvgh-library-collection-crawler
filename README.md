@@ -19,8 +19,6 @@
 
 ## Requirements
 
-- This construct uses Async/Await methods. Please add [polyfill.js](https://polyfill.io/v2/docs/) first if your plaforms do NOT support.
-
 - This construct uses [Axios.js](https://github.com/axios/axios), so you need to care the Cross-Origin Requests (CORS).
 
 ## Installation
@@ -31,16 +29,29 @@ npm install @flowereatfish/tvgh-library-collection-api --save
 
 ## Usage
 
-```javascript
-import tvghLibraryCollectionApi from '@flowereatfish/tvgh-library-collection-api';
+- Node.js version 8 or higher (with full Async/Await support):
 
-const run = async () => {
-  const results = await tvghLibraryCollectionApi('橡皮擦計畫');
-  console.log(results);
-};
+  ```javascript
+  const tvghLibraryCollectionApi = require('@flowereatfish/tvgh-library-collection-api');
 
-run();
-```
+  const run = async () => {
+    const results = await tvghLibraryCollectionApi('橡皮擦計畫');
+    console.log(results);
+  };
+
+  run();
+  ```
+
+- Others:
+
+  ```javascript
+  const tvghLibraryCollectionApi = require('@flowereatfish/tvgh-library-collection-api');
+
+  tvghLibraryCollectionApi('橡皮擦計畫')
+    .then(res => console.log(res));
+
+  run();
+  ```
 
 ## Demo
 
