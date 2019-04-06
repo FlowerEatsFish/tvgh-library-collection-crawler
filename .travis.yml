@@ -24,7 +24,6 @@ script:
   - npm run build:dev
   - npm run build:prod
   - npm test
-  - npm run demo:js
 
 after_success:
   - codecov
