@@ -1,6 +1,6 @@
 {
-  "name": "tvgh-library-collection-api",
-  "version": "1.0.0",
+  "name": "@flowereatfish/tvgh-library-collection-api",
+  "version": "1.0.1-beta1",
   "description": "Unofficial Taipei Veterans General Hospital Medical Library Collection API",
   "main": "dist/index.js",
   "typings": "index.d.ts",
@@ -20,7 +20,6 @@
   },
   "keywords": [
     "api",
-    "typescript",
     "web-crawler"
   ],
   "author": "Eating-Fish FLower",
