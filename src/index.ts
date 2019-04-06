@@ -35,26 +35,20 @@ const getItemDetail: Function = async (url: string): Promise<DetailTypeWithUrl> 
 
 const tvghLibraryCollection: Function = async (keyword: string, page: number = 1, libraryNumbering: number = 0): Promise<object | null> => {
   const htmlCodeAfterFetch: FetchResult = await collectionFetch(null, keyword, page, libraryList[libraryNumbering]);
-  console.log(`>>> You search data using ${htmlCodeAfterFetch.url}`);
   // To check where the HTML code is from and do next step
   if (isItemListResult(htmlCodeAfterFetch.data)) {
     // To do here if the HTML code contains two or more results
-    console.log('>>> The HTML code contains two or more results.');
     const itemList: ItemType[] = await itemListParser(htmlCodeAfterFetch.data);
     const itemListWithDetail: DetailTypeWithUrl[] = await Promise.all(itemList.map((value: ItemType): DetailTypeWithUrl => getItemDetail(value.url)));
-    console.log(itemListWithDetail);
 
     return itemListWithDetail;
   } else if (isItemResult(htmlCodeAfterFetch.data)) {
     // To do here if the HTML code only contains one result
-    console.log('>>> The HTML code only contains one result.');
     const itemWithDetail: DetailType = await itemParser(htmlCodeAfterFetch.data);
-    console.log({ ...itemWithDetail, url: htmlCodeAfterFetch.url });
 
     return { ...itemWithDetail, url: htmlCodeAfterFetch.url };
   } else {
     // To do here if no result is got from the HTML code
-    console.log('>>> No result is got from the HTML code.');
 
     return null;
   }

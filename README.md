@@ -38,8 +38,6 @@
 
   ```shell
   >>> You search data using keyword "愛因斯坦的時空".
-  >>> You search data using http://tghtpe.ent.sirsidynix.net/client/zh_TW/vgh/search/results?qu=%E6%84%9B%E5%9B%A0%E6%96%AF%E5%9D%A6%E7%9A%84%E6%99%82%E7%A9%BA&rw=0&lm=VGHTPE
-  >>> The HTML code only contains one result.
 
   { title: '愛因斯坦的時空',
     author: '李家維',
@@ -63,16 +61,12 @@
 
   ```shell
   >>> You search data using keyword "Alzheimer disease".
-  >>> You search data using http://tghtpe.ent.sirsidynix.net/client/zh_TW/vgh/search/results?qu=Alzheimer%20disease&rw=0&lm=VGHTPE
-  >>> The HTML code contains two or more results.
 
-  [ {...}, {...}, ... ] # Array.length <= 12
+  [ {...}, {...}, ... ] # Array.prototype.length <= 12
   ```
 
   ```shell
   >>> You search data using keyword "no-result-as-example".
-  >>> You search data using http://tghtpe.ent.sirsidynix.net/client/zh_TW/vgh/search/results?qu=no%20result%20as%20example&rw=0&lm=VGHTPE
-  >>> No result is got from the HTML code.
 
   null
   ```

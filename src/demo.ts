@@ -13,7 +13,8 @@ const demoKeywordList: string[] = [
 const demo: Function = async (keywordList: string[]): Promise<void> => {
   for (const keyword of keywordList) {
     await console.log(`>>> You search data using keyword "${keyword}".`);
-    await tvghLibraryCollection(keyword);
+    const result = await tvghLibraryCollection(keyword);
+    console.log(result);
   }
 };
 
