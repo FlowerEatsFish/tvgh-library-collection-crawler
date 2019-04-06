@@ -20,9 +20,11 @@ notifications:
 script:
   - npm install codecov -g
   - npm run lint
+  - npm run build
   - npm run build:dev
   - npm run build:prod
   - npm test
+  - npm run demo:js
 
 after_success:
   - codecov

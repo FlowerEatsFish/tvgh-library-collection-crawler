@@ -12,8 +12,8 @@ const commonConfig = {
     'tvgh-library-collection-api': './src/index.ts'
   },
   output: {
-    path: path.join(__dirname, 'build'),
-    filename: process.env.NODE_ENV === PRODUCTION ? './[name].min.js' : './[name].development.js',
+    path: path.join(__dirname, 'dist'),
+    filename: process.env.NODE_ENV === PRODUCTION ? './[name].min.js' : './[name].js',
     library: 'tvgh-library-collection-api',
     libraryTarget: 'umd'
   },

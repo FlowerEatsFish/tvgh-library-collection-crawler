@@ -12,7 +12,8 @@ module.exports = {
   ],
   collectCoverageFrom: [
     '<rootDir>/src/**/*.ts',
-    '!<rootDir>/src/demo.ts'
+    '!<rootDir>/src/demo.ts',
+    '!<rootDir>/src/**/*.d.ts'
   ],
   testMatch: [
     '<rootDir>/test/**/*.ts',
