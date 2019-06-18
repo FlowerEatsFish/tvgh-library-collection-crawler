@@ -8,18 +8,20 @@
 [![Code style](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 [![License GPLv3](https://img.shields.io/badge/license-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
-- [Unofficial Taipei Veterans General Hospital Medical Library Collection API](#unofficial-taipei-veterans-general-hospital-medical-library-collection-api)
-  - [Requirement](#requirement)
-  - [Installation](#installation)
-  - [Usage](#usage)
-    - [Node.js version 8 or higher (with full Async/Await support)](#nodejs-version-8-or-higher-with-full-asyncawait-support)
-    - [Others](#others)
-  - [Demo](#demo)
-    - [Commands](#commands)
-    - [Results](#results)
-  - [API documentation](#api-documentation)
-    - [Input parameters](#input-parameters)
-    - [Output results](#output-results)
+非官方臺北榮民總醫院醫學圖書館 API
+
+- [Unofficial Taipei Veterans General Hospital Medical Library Collection API](#Unofficial-Taipei-Veterans-General-Hospital-Medical-Library-Collection-API)
+  - [Requirement](#Requirement)
+  - [Installation](#Installation)
+  - [Usage](#Usage)
+    - [Node.js version 8 or higher (with full Async/Await support)](#Nodejs-version-8-or-higher-with-full-AsyncAwait-support)
+    - [Others](#Others)
+  - [Demo](#Demo)
+    - [Commands](#Commands)
+    - [Results](#Results)
+  - [API documentation](#API-documentation)
+    - [Input parameters](#Input-parameters)
+    - [Output results](#Output-results)
 
 ## Requirement
 
@@ -74,7 +76,8 @@ $ npm start
 ```shell
 >>> You search data using keyword "愛因斯坦的時空".
 
-{ title: '愛因斯坦的時空',
+{
+  title: '愛因斯坦的時空',
   author: '李家維',
   isbn: null,
   issn: null,
@@ -83,15 +86,19 @@ $ npm start
   pub_place: '臺北市 :',
   pub_info: '臺北市 : 遠流, 2017[民106]',
   shape: '159面 : 彩圖 ; 28公分',
-  collection:
-  [ { library: '北榮',
+  collection: [
+    {
+      library: '北榮',
       data_type: '*圖書',
       special_number: '',
       barcode: '00000253432',
       call_number: '331/8466/2017',
       is_flow: true,
-      status: '正在查詢...' } ],
-  url: 'http://tghtpe.ent.sirsidynix.net/client/zh_TW/vgh/search/results?qu=%E6%84%9B%E5%9B%A0%E6%96%AF%E5%9D%A6%E7%9A%84%E6%99%82%E7%A9%BA&rw=0&lm=VGHTPE' }
+      status: '正在查詢...'
+    }
+  ],
+  url: 'http://tghtpe.ent.sirsidynix.net/client/zh_TW/vgh/search/results?qu=%E6%84%9B%E5%9B%A0%E6%96%AF%E5%9D%A6%E7%9A%84%E6%99%82%E7%A9%BA&rw=0&lm=VGHTPE'
+}
 ```
 
 ```shell
@@ -115,7 +122,7 @@ import tvghLibraryCollectionApi from '@flowereatfish/tvgh-library-collection-api
 
 const result = tvghLibraryCollectionApi(
   keyword, // string. Necessary.
-            //If you configs it as null, it will get an error.
+           // If you set it as null, it will get an error.
   page, // number. Positive integer. Default: 1.
         // Every page only shows maximum 12 results.
   libraryNumbering // number. Integer and the range from 0 to 7 are valid. Default: 0.
@@ -128,7 +135,7 @@ const result = tvghLibraryCollectionApi(
                     // 5: VHCT   新竹分院
                     // 6: VHTT   臺東分院
                     // 7: VHYL   玉里分院
-                    // 9: YSVH   員山分院
+                    // 8: YSVH   員山分院
 )
 ```
 
