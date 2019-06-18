@@ -10,14 +10,14 @@ export interface CollectionType {
 
 export interface DetailType {
   title: string;
-  author: string;
-  isbn: string;
-  edition: string;
-  pub_year: string;
-  pub_place: string;
-  pub_info: string;
-  issn: string;
-  shape: string;
+  author: string | null;
+  isbn: string | null;
+  edition: string | null;
+  pub_year: string | null;
+  pub_place: string | null;
+  pub_info: string | null;
+  issn: string | null;
+  shape: string | null;
   collection: CollectionType[] | null;
 }
 
