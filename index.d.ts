@@ -19,6 +19,7 @@ export interface DetailType {
   issn: string | null;
   shape: string | null;
   collection: CollectionType[] | null;
+  url: string;
 }
 
 export type TvghLibraryCollectionFunction =

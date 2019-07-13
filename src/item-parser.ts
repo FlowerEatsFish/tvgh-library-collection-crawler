@@ -2,28 +2,7 @@
  * To parse the results when the fetcher got one data.
  */
 
-export interface DetailType {
-  title: string;
-  author: string | null;
-  isbn: string | null;
-  edition: string | null;
-  pub_year: string | null;
-  pub_place: string | null;
-  pub_info: string | null;
-  issn: string | null;
-  shape: string | null;
-  collection: CollectionType[] | null;
-}
-
-interface CollectionType {
-  library: string | null;
-  data_type: string | null;
-  special_number: string | null;
-  barcode: string | null;
-  call_number: string | null;
-  is_flow: boolean;
-  status: string | null;
-}
+import { CollectionType, DetailType } from '../index';
 
 const removeHtmlTag: Function = (htmlCode: string): string => {
   // To remove HTML tag
@@ -97,7 +76,7 @@ const getInfoByTag: Function = (htmlCode: string, tag: string): string|null => {
   return null;
 };
 
-export const itemParser: Function = async (htmlCode: string): Promise<DetailType> => ({
+export const itemParser: Function = async (htmlCode: string, url: string): Promise<DetailType> => ({
   title: getInfoByTag(htmlCode, 'INITIAL_TITLE_SRCH'),
   author: getInfoByTag(htmlCode, 'INITIAL_AUTHOR_SRCH'),
   isbn: getInfoByTag(htmlCode, 'ISBN'),
@@ -107,5 +86,6 @@ export const itemParser: Function = async (htmlCode: string): Promise<DetailType
   pub_place: getInfoByTag(htmlCode, 'PUBPLACE'),
   pub_info: getInfoByTag(htmlCode, 'PUBLICATION_INFO'),
   shape: getInfoByTag(htmlCode, 'PHYSICAL_DESC'),
-  collection: await getAllCollection(htmlCode)
+  collection: await getAllCollection(htmlCode),
+  url
 });
