@@ -22,7 +22,7 @@ export interface DetailType {
 }
 
 export type TvghLibraryCollectionFunction =
-  (keyword: string, page?: number, libraryNumbering?: number) => DetailType;
+  (keyword: string, page?: number, libraryNumbering?: number) => Promise<DetailType | DetailType[] | null>;
 
 declare const tvghLibraryCollectionApi: TvghLibraryCollectionFunction;
 
