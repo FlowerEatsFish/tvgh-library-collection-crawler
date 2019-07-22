@@ -18,9 +18,13 @@ notifications:
   email: false
   slack:
     rooms:
-      - secure: "lOXYKEKV1UA1n7Z1o1HXEFfJurfJ5HD+hWA1EFERIzOjgZikrVRRZmzjUb0hNwOFIzTUkkRGSdExh5vNuZakQ0baz+P4yQ9ZQ5rCMaI4gdhXSdy0rLYUdmbazRpouRJf3/KFwxErnabEfpj+s/vRbEbSGuFTuARjRotRNPWz9I7GV7ZeheGBeOk3nvSA62oYrghTauK5bAaAd/0ILYCvKlsdO1t2MrlFhQK2q886P8YBTtbCMbInDCBwMrqNkmO6O29ZLL6kQ/JJoS+VCZAJ3tP1IEfqf+N/bB/UY5eYSPlfUYR/iLqngUGljONb4FoxZ0bQPL9fKdMkJlYInwPsD+JsdKA4ehs5AEgvzn7fs3o1FylPsc6ZMq+gyJawB1dJuOKbnJZWFZLxKVyl73Z/drhs2RIXitdDGrXoxr5nFgzR3Tf28U044DolrwTFNlxP+d39zYEk46n2v6vcm8fJ5Xkbkbwh/1R1vZFG9uxSquNB+8qqnTnXfNRF7viQbHruv4wvaL8sk+4dN6AicgAu58I5tvHWdjDDtaFzePYiqjoMzI567KYqIZT8+zK2udfgEHExCcnV2IZrkgyChAmPFmkfDtqrh4XwUO+mbBEW9OfaN19G2+TrcKFOB7KNYVyki55Kr8QB6M0t3zXU++UMWkVNjFwFBuit9whmMpNs6KI="
+      - secure: "aV6tRmLPUAqGP3cnjTGOFVLS4kAB+DGyXqDU4WC6EGcGlojUPBwP6C/bzU5YCuMz6qE547LbN/1BYNFatJRqsg40fleN7ZYPwnArPiWRRg2rulIe5Fr0y04rzNcUiaYvNL6JoBjG/sGFLrBXPImC7Ovqg4eUHVtdGXP6jQD2fo/D2pDFijJEJDvHZldtywzguJT9qnX7pLjU521z63ka+v0mB4zYWpDeUkJNsBDUM5T+WK4gWwIkaCXdsBymKo+jFSmhynYhzm4C+Piq/fTd+/HGy5hWwCMhgsalwxZIDgde/BxYf+Z2HiubiDgyWNs9D4z8QaJAtTPtI+5ND7YzsmyRforjtTfYYnN/zzutUFYtsaafEJ9w/O8Gr3pKleW6Rrv3kwJGQ6aH0VkASDuRhqubRZU0ZEic3lJ69N8/LSyyTzNwkheYzVAsSMl9DRAigg6Be+sEbb7x4PZ6t6mxLutODA9DsNgpCf4CwVgGK877NstHBqS7u9rYmImN2i6LArSRnUlklRRNMCa8+6CnUWPHzCDnWv2hzhYTZxXVGcbW57ohktOJkPzmLbdDIl0APjj94zlxE6o1jM4an9gMSf6ruQLg0Vec4FuQUrQGFvGfSuGVUcBaJVUjFHUkYbhnexWqel3hzMcnIDZgKqXuwmVsPP0ImDigtASCa+wC6kU="
     on_success: always # default: change
     on_failure: always # default: always
+    template:
+      - "*%{repository_slug}* | *<%{build_url}|#%{build_number}>* | *%{branch}* | *<%{compare_url}|%{commit}>*"
+      - "_%{commit_message}_"
+      - "*%{result}* | *%{duration}* | %{message}"
 
 script:
   - npm install codecov -g
