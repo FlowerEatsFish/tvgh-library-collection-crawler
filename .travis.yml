@@ -17,7 +17,7 @@ branches:
 notifications:
   email: false
 
-install:
+before_install:
   - npm install codecov -g
 
 script:
