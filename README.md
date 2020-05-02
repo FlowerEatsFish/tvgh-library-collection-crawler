@@ -12,7 +12,7 @@
 
 - [Unofficial Taipei Veterans General Hospital Medical Library Collection API](#Unofficial-Taipei-Veterans-General-Hospital-Medical-Library-Collection-API)
   - [Requirement](#Requirement)
-  - [Installation](#Installation)
+  - [Installations](#Installations)
   - [Usage](#Usage)
     - [Node.js version 8 or higher (with full Async/Await support)](#Nodejs-version-8-or-higher-with-full-AsyncAwait-support)
     - [Others](#Others)
@@ -27,10 +27,18 @@
 
 This construct uses [Axios.js](https://github.com/axios/axios), so you need to care the Cross-Origin Requests (CORS).
 
-## Installation
+## Installations
+
+- NPM
 
 ```shell
 npm install @flowereatfish/tvgh-library-collection-api --save
+```
+
+- Yarn
+
+```shell
+yarn add @flowereatfish/tvgh-library-collection-api
 ```
 
 ## Usage
@@ -65,10 +73,10 @@ tvghLibraryCollectionApi('橡皮擦計畫')
 # To download the files and install packages.
 $ git clone https://github.com/FlowerEatFish/tvgh-library-collection-api.git
 $ cd tvgh-library-collection-api
-$ npm install
+$ yarn install # npm install
 
 # To run a demo.
-$ npm start
+$ yarn start # npm start
 ```
 
 ### Results
