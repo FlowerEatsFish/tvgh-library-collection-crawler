@@ -22,8 +22,11 @@ export interface DetailType {
   url: string;
 }
 
-export type TvghLibraryCollectionFunction =
-  (keyword: string, page?: number, libraryNumbering?: number) => Promise<DetailType | DetailType[] | null>;
+export type TvghLibraryCollectionFunction = (
+  keyword: string,
+  page?: number,
+  libraryNumbering?: number,
+) => Promise<DetailType | DetailType[] | null>;
 
 declare const tvghLibraryCollectionApi: TvghLibraryCollectionFunction;
 

@@ -2,17 +2,17 @@
  * To parse the results when the fetcher got one data.
  */
 
-import { CollectionType, DetailType } from '../index';
+import { CollectionType, DetailType } from "../index";
 
 const removeHtmlTag: Function = (htmlCode: string): string => {
   // To remove HTML tag
-  let result: string = htmlCode.replace(/<[^>]*>/gi, '');
+  let result: string = htmlCode.replace(/<[^>]*>/gi, "");
   // To remove newline tag
-  result = result.replace(/\n/gi, '');
+  result = result.replace(/\n/gi, "");
   // To remove two or more consequent spaces
-  result = result.replace(/\s+/gi, ' ');
+  result = result.replace(/\s+/gi, " ");
   // To remove last space
-  result = result.replace(/\s+$/, '');
+  result = result.replace(/\s+$/, "");
 
   return result;
 };
@@ -22,43 +22,47 @@ const getCollection: Function = (htmlCode: string): CollectionType => {
 
   if (result != null) {
     if (result.length === 6) {
-      return ({
+      return {
         library: removeHtmlTag(result[0]),
         data_type: removeHtmlTag(result[1]),
         special_number: removeHtmlTag(result[2]),
         barcode: removeHtmlTag(result[3]),
         call_number: removeHtmlTag(result[4]),
         is_flow: true,
-        status: removeHtmlTag(result[5])
-      });
+        status: removeHtmlTag(result[5]),
+      };
     } else if (result.length === 4) {
-      return ({
+      return {
         library: removeHtmlTag(result[0]),
         data_type: null,
         special_number: null,
         barcode: null,
         call_number: removeHtmlTag(result[2]),
         is_flow: false,
-        status: removeHtmlTag(result[1])
-      });
+        status: removeHtmlTag(result[1]),
+      };
     }
   }
 
-  return ({
+  return {
     library: null,
     data_type: null,
     special_number: null,
     barcode: null,
     call_number: null,
     is_flow: false,
-    status: null
-  });
+    status: null,
+  };
 };
 
-const getAllCollection: Function = async (htmlCode: string): Promise<CollectionType[]|null> => {
-  const result: string[] | null = htmlCode.match(/<tr class="detailItemsTableRow ">[\w\W]*?<\/tr>/gi);
+const getAllCollection: Function = async (htmlCode: string): Promise<CollectionType[] | null> => {
+  const result: string[] | null = htmlCode.match(
+    /<tr class="detailItemsTableRow ">[\w\W]*?<\/tr>/gi,
+  );
   if (result != null) {
-    const statusList: CollectionType[] = await Promise.all(result.map((value: string): CollectionType => getCollection(value)));
+    const statusList: CollectionType[] = await Promise.all(
+      result.map((value: string): CollectionType => getCollection(value)),
+    );
 
     return statusList;
   }
@@ -66,26 +70,26 @@ const getAllCollection: Function = async (htmlCode: string): Promise<CollectionT
   return null;
 };
 
-const getInfoByTag: Function = (htmlCode: string, tag: string): string|null => {
-  const newRegExp: RegExp = new RegExp(`<div class="displayElementText ${tag}">([\\w\\W]*?)</div>`, 'gi');
+const getInfoByTag: Function = (htmlCode: string, tag: string): string | null => {
+  const newRegExp = new RegExp(`<div class="displayElementText ${tag}">([\\w\\W]*?)</div>`, "gi");
   const result: string[] | null = htmlCode.match(newRegExp);
   if (result != null) {
-    return result[0].replace(newRegExp, '$1');
+    return result[0].replace(newRegExp, "$1");
   }
 
   return null;
 };
 
 export const itemParser: Function = async (htmlCode: string, url: string): Promise<DetailType> => ({
-  title: getInfoByTag(htmlCode, 'INITIAL_TITLE_SRCH'),
-  author: getInfoByTag(htmlCode, 'INITIAL_AUTHOR_SRCH'),
-  isbn: getInfoByTag(htmlCode, 'ISBN'),
-  issn: getInfoByTag(htmlCode, 'ISSN'),
-  edition: getInfoByTag(htmlCode, 'EDITION'),
-  pub_year: getInfoByTag(htmlCode, 'PUBDATE_YEAR'),
-  pub_place: getInfoByTag(htmlCode, 'PUBPLACE'),
-  pub_info: getInfoByTag(htmlCode, 'PUBLICATION_INFO'),
-  shape: getInfoByTag(htmlCode, 'PHYSICAL_DESC'),
+  title: getInfoByTag(htmlCode, "INITIAL_TITLE_SRCH"),
+  author: getInfoByTag(htmlCode, "INITIAL_AUTHOR_SRCH"),
+  isbn: getInfoByTag(htmlCode, "ISBN"),
+  issn: getInfoByTag(htmlCode, "ISSN"),
+  edition: getInfoByTag(htmlCode, "EDITION"),
+  pub_year: getInfoByTag(htmlCode, "PUBDATE_YEAR"),
+  pub_place: getInfoByTag(htmlCode, "PUBPLACE"),
+  pub_info: getInfoByTag(htmlCode, "PUBLICATION_INFO"),
+  shape: getInfoByTag(htmlCode, "PHYSICAL_DESC"),
   collection: await getAllCollection(htmlCode),
-  url
+  url,
 });
