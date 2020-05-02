@@ -9,7 +9,7 @@ export interface CollectionType {
 }
 
 export interface DetailType {
-  title: string;
+  title: string | null;
   author: string | null;
   isbn: string | null;
   edition: string | null;
@@ -19,7 +19,7 @@ export interface DetailType {
   issn: string | null;
   shape: string | null;
   collection: CollectionType[] | null;
-  url: string;
+  url: string | null;
 }
 
 export type TvghLibraryCollectionFunction = (

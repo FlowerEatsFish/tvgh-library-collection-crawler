@@ -3,11 +3,11 @@
  */
 
 import { TvghLibraryCollectionFunction, DetailType } from "../index";
-import { ItemType, itemListParser } from "./item-list-parser";
+import { itemListParser } from "./item-list-parser";
 import { itemParser } from "./item-parser";
-import { collectionFetch, FetchResult } from "./vgh-collection-fetch";
+import { collectionFetch } from "./vgh-collection-fetch";
 
-const libraryList: string[] = [
+const libraryList = [
   "VGHTPE", // 臺北總院
   "GANDAU", // 關渡分院
   "FLVH", // 鳳林分院
@@ -19,17 +19,19 @@ const libraryList: string[] = [
   "YSVH", // 員山分院
 ];
 
-const isItemListResult: Function = (htmlCode: string): boolean =>
-  htmlCode.includes('class="displayDetailLink"');
+const isItemListResult = (htmlCode: string): boolean => {
+  return htmlCode.includes('class="displayDetailLink"');
+};
 
-const isItemResult: Function = (htmlCode: string): boolean =>
-  htmlCode.includes('class="detail_main_wrapper"');
+const isItemResult = (htmlCode: string): boolean => {
+  return htmlCode.includes('class="detail_main_wrapper"');
+}
 
-const getItemDetail: Function = async (url: string): Promise<DetailType> => {
-  const htmlCodeAfterFetch: FetchResult = await collectionFetch(url);
-  const itemDetail: DetailType = await itemParser(htmlCodeAfterFetch.data, url);
+const getItemDetail = async (url: string | null): Promise<DetailType> => {
+  const htmlCodeAfterFetch = await collectionFetch(url);
+  const itemDetail = itemParser(htmlCodeAfterFetch.data || "", url);
 
-  return { ...itemDetail };
+  return itemDetail;
 };
 
 const tvghLibraryCollection: TvghLibraryCollectionFunction = async (
@@ -37,34 +39,35 @@ const tvghLibraryCollection: TvghLibraryCollectionFunction = async (
   page: number = 1,
   libraryNumbering: number = 0,
 ): Promise<DetailType | DetailType[] | null> => {
-  const htmlCodeAfterFetch: FetchResult = await collectionFetch(
+  const htmlCodeAfterFetch = await collectionFetch(
     null,
     keyword,
     page,
     libraryList[libraryNumbering],
   );
+  if (!htmlCodeAfterFetch || !htmlCodeAfterFetch.data) {
+    return null;
+  }
+
   // To check where the HTML code is from and do next step
   if (isItemListResult(htmlCodeAfterFetch.data)) {
     // To do here if the HTML code contains two or more results
-    const itemList: ItemType[] = await itemListParser(htmlCodeAfterFetch.data);
-    const itemListWithDetail: DetailType[] = await Promise.all(
-      itemList.map((value: ItemType): DetailType => getItemDetail(value.url)),
+    const itemList = itemListParser(htmlCodeAfterFetch.data) || [];
+    const itemListWithDetail = await Promise.all(
+      itemList.map((value): Promise<DetailType> => getItemDetail(value.url)),
     );
 
     return itemListWithDetail;
-  } else if (isItemResult(htmlCodeAfterFetch.data)) {
-    // To do here if the HTML code only contains one result
-    const itemWithDetail: DetailType = await itemParser(
-      htmlCodeAfterFetch.data,
-      htmlCodeAfterFetch.url,
-    );
-
-    return { ...itemWithDetail };
-  } else {
-    // To do here if no result is got from the HTML code
-
-    return null;
   }
+  if (isItemResult(htmlCodeAfterFetch.data)) {
+    // To do here if the HTML code only contains one result
+    const itemWithDetail = itemParser(htmlCodeAfterFetch.data, htmlCodeAfterFetch.url);
+
+    return itemWithDetail;
+  }
+
+  // To do here if no result is got from the HTML code
+  return null;
 };
 
 export default tvghLibraryCollection;

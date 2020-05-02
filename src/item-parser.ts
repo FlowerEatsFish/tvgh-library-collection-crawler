@@ -4,23 +4,23 @@
 
 import { CollectionType, DetailType } from "../index";
 
-const removeHtmlTag: Function = (htmlCode: string): string => {
+const removeHtmlTag = (htmlCode: string): string => {
   // To remove HTML tag
-  let result: string = htmlCode.replace(/<[^>]*>/gi, "");
+  let result = htmlCode.replace(/<[^>]*>/gi, "");
   // To remove newline tag
   result = result.replace(/\n/gi, "");
   // To remove two or more consequent spaces
   result = result.replace(/\s+/gi, " ");
-  // To remove last space
-  result = result.replace(/\s+$/, "");
+  // To remove the ending of spaces
+  result = result.trimRight();
 
   return result;
 };
 
-const getCollection: Function = (htmlCode: string): CollectionType => {
-  const result: string[] | null = htmlCode.match(/<td>[\w\W]*?<\/td>/gi);
+const getCollection = (htmlCode: string): CollectionType => {
+  const result = htmlCode.match(/<td>[\w\W]*?<\/td>/gi);
 
-  if (result != null) {
+  if (result) {
     if (result.length === 6) {
       return {
         library: removeHtmlTag(result[0]),
@@ -31,7 +31,8 @@ const getCollection: Function = (htmlCode: string): CollectionType => {
         is_flow: true,
         status: removeHtmlTag(result[5]),
       };
-    } else if (result.length === 4) {
+    }
+    if (result.length === 4) {
       return {
         library: removeHtmlTag(result[0]),
         data_type: null,
@@ -55,41 +56,35 @@ const getCollection: Function = (htmlCode: string): CollectionType => {
   };
 };
 
-const getAllCollection: Function = async (htmlCode: string): Promise<CollectionType[] | null> => {
-  const result: string[] | null = htmlCode.match(
-    /<tr class="detailItemsTableRow ">[\w\W]*?<\/tr>/gi,
-  );
-  if (result != null) {
-    const statusList: CollectionType[] = await Promise.all(
-      result.map((value: string): CollectionType => getCollection(value)),
-    );
+const getAllCollection = (htmlCode: string): CollectionType[] | null => {
+  const result = htmlCode.match(/<tr class="detailItemsTableRow ">[\w\W]*?<\/tr>/gi);
 
-    return statusList;
+  if (result) {
+    return result.map((value): CollectionType => getCollection(value));
   }
 
   return null;
 };
 
-const getInfoByTag: Function = (htmlCode: string, tag: string): string | null => {
+const getInfoByTag = (htmlCode: string, tag: string): string | null => {
   const newRegExp = new RegExp(`<div class="displayElementText ${tag}">([\\w\\W]*?)</div>`, "gi");
-  const result: string[] | null = htmlCode.match(newRegExp);
-  if (result != null) {
-    return result[0].replace(newRegExp, "$1");
-  }
+  const result = htmlCode.match(newRegExp);
 
-  return null;
+  return result ? result[0].replace(newRegExp, "$1") : null;
 };
 
-export const itemParser: Function = async (htmlCode: string, url: string): Promise<DetailType> => ({
-  title: getInfoByTag(htmlCode, "INITIAL_TITLE_SRCH"),
-  author: getInfoByTag(htmlCode, "INITIAL_AUTHOR_SRCH"),
-  isbn: getInfoByTag(htmlCode, "ISBN"),
-  issn: getInfoByTag(htmlCode, "ISSN"),
-  edition: getInfoByTag(htmlCode, "EDITION"),
-  pub_year: getInfoByTag(htmlCode, "PUBDATE_YEAR"),
-  pub_place: getInfoByTag(htmlCode, "PUBPLACE"),
-  pub_info: getInfoByTag(htmlCode, "PUBLICATION_INFO"),
-  shape: getInfoByTag(htmlCode, "PHYSICAL_DESC"),
-  collection: await getAllCollection(htmlCode),
-  url,
-});
+export const itemParser = (htmlCode: string, url: string | null): DetailType => {
+  return {
+    title: getInfoByTag(htmlCode, "INITIAL_TITLE_SRCH"),
+    author: getInfoByTag(htmlCode, "INITIAL_AUTHOR_SRCH"),
+    isbn: getInfoByTag(htmlCode, "ISBN"),
+    issn: getInfoByTag(htmlCode, "ISSN"),
+    edition: getInfoByTag(htmlCode, "EDITION"),
+    pub_year: getInfoByTag(htmlCode, "PUBDATE_YEAR"),
+    pub_place: getInfoByTag(htmlCode, "PUBPLACE"),
+    pub_info: getInfoByTag(htmlCode, "PUBLICATION_INFO"),
+    shape: getInfoByTag(htmlCode, "PHYSICAL_DESC"),
+    collection: getAllCollection(htmlCode),
+    url,
+  };
+};

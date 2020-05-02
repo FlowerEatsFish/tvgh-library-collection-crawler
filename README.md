@@ -152,7 +152,7 @@ const result = tvghLibraryCollectionApi(
 ```javascript
 // If you get one result, it will return an "object".
 result = {
-  title: string,
+  title: string or null,
   author: string or null,
   isbn: string or null,
   issn: string or null,
@@ -174,7 +174,7 @@ result = {
       },
       { ... }, { ... }, ...
     ],
-  url: string
+  url: string or null
 };
 
 // If you get two or more results, it will return an "array".
