@@ -6,7 +6,7 @@
 [![Codecov status](https://codecov.io/gh/FlowerEatFish/tvgh-library-collection-api/branch/master/graph/badge.svg)](https://codecov.io/gh/FlowerEatFish/tvgh-library-collection-api/commits)
 [![Dependencies status](https://david-dm.org/FlowerEatFish/tvgh-library-collection-api/status.svg)](https://david-dm.org/FlowerEatFish/tvgh-library-collection-api)
 [![Code style](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://prettier.io/)
-[![License GPLv3](https://img.shields.io/badge/license-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![License MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 非官方臺北榮民總醫院醫學圖書館 API
 
