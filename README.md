@@ -5,13 +5,13 @@
 [![AppVeyor status](https://ci.appveyor.com/api/projects/status/aeiv3t9fajpgiabc/branch/master?svg=true)](https://ci.appveyor.com/project/FlowerEatFish/tvgh-library-collection-api/history)
 [![Codecov status](https://codecov.io/gh/FlowerEatFish/tvgh-library-collection-api/branch/master/graph/badge.svg)](https://codecov.io/gh/FlowerEatFish/tvgh-library-collection-api/commits)
 [![Dependencies status](https://david-dm.org/FlowerEatFish/tvgh-library-collection-api/status.svg)](https://david-dm.org/FlowerEatFish/tvgh-library-collection-api)
-[![Code style](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![Code style](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://prettier.io/)
 [![License GPLv3](https://img.shields.io/badge/license-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 非官方臺北榮民總醫院醫學圖書館 API
 
 - [Unofficial Taipei Veterans General Hospital Medical Library Collection API](#Unofficial-Taipei-Veterans-General-Hospital-Medical-Library-Collection-API)
-  - [Requirement](#Requirement)
+  - [Requirements](#Requirements)
   - [Installations](#Installations)
   - [Usage](#Usage)
     - [Node.js version 8 or higher (with full Async/Await support)](#Nodejs-version-8-or-higher-with-full-AsyncAwait-support)
@@ -23,9 +23,9 @@
     - [Input parameters](#Input-parameters)
     - [Output results](#Output-results)
 
-## Requirement
+## Requirements
 
-This construct uses [Axios.js](https://github.com/axios/axios), so you need to care the Cross-Origin Requests (CORS).
+- This construct uses [Axios.js](https://github.com/axios/axios), so you need to care the Cross-Origin Requests (CORS).
 
 ## Installations
 
@@ -133,7 +133,7 @@ const result = tvghLibraryCollectionApi(
            // If you set it as null, it will get an error.
   page, // number. Positive integer. Default: 1.
         // Every page only shows maximum 12 results.
-  libraryNumbering // number. Integer and the range from 0 to 7 are valid. Default: 0.
+  libraryNumbering, // number. Integer and the range from 0 to 7 are valid. Default: 0.
                     // Each number represents a different library, as follows:
                     // 0: VGHTPE 臺北總院
                     // 1: GANDAU 關渡分院
@@ -152,29 +152,29 @@ const result = tvghLibraryCollectionApi(
 ```javascript
 // If you get one result, it will return an "object".
 result = {
-  title: string or null,
-  author: string or null,
-  isbn: string or null,
-  issn: string or null,
-  edition: string or null,
-  pub_year: string or null,
-  pub_place: string or null,
-  pub_info: string or null,
-  shape: string or null,
+  title: string | null,
+  author: string | null,
+  isbn: string | null,
+  issn: string | null,
+  edition: string | null,
+  pub_year: string | null,
+  pub_place: string | null,
+  pub_info: string | null,
+  shape: string | null,
   collection: object[]
     [
       {
-        library: string,
-        data_type: string or null,
-        special_number: string or null,
-        barcode: string or null,
-        call_number: string or null,
+        library: string | null,
+        data_type: string | null,
+        special_number: string | null,
+        barcode: string | null,
+        call_number: string | null,
         is_flow: boolean,
-        status: '正在查詢...' or null // You always get this result because the text is pre-rendering.
+        status: '正在查詢...' | null // You always get this result because the text is pre-rendering.
       },
       { ... }, { ... }, ...
     ],
-  url: string or null
+  url: string | null,
 };
 
 // If you get two or more results, it will return an "array".
@@ -182,7 +182,7 @@ result = [
   {
     ... // This result is the same as above.
   },
-  ...
+  { ... }, { ... }, ...
 ];
 
 // If you have not got any result, it will return a "null".
