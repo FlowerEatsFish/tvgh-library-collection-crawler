@@ -25,7 +25,7 @@ const isItemListResult = (htmlCode: string): boolean => {
 
 const isItemResult = (htmlCode: string): boolean => {
   return htmlCode.includes('class="detail_main_wrapper"');
-}
+};
 
 const getItemDetail = async (url: string | null): Promise<DetailType> => {
   const htmlCodeAfterFetch = await collectionFetch(url);
