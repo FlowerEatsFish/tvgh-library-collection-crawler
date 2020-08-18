@@ -38,7 +38,7 @@ jobs:
             {
               attachments: [{
                 color: '${{ job.status }}' === 'success' ? 'good' : '${{ job.status }}' === 'failure' ? 'danger' : 'warning',
-                text: `**${process.env.AS_REPO}** | ${process.env.AS_REF} | ${process.env.AS_EVENT_NAME}\n${process.env.AS_COMMIT} ${process.env.AS_MESSAGE}\n${{ job.status }} | ${process.env.AS_TOOK} | ${process.env.AS_WORKFLOW} ${process.env.AS_JOB}`,
+                text: `*${process.env.AS_REPO}* | ${process.env.AS_REF} | ${process.env.AS_EVENT_NAME}\n${process.env.AS_COMMIT} ${process.env.AS_MESSAGE}\n${{ job.status }} | ${process.env.AS_TOOK} | ${process.env.AS_WORKFLOW} ${process.env.AS_JOB}`,
               }]
             }
         env:
