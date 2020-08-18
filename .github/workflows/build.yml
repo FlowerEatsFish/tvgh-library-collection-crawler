@@ -29,8 +29,13 @@ jobs:
       - run: yarn test
       - name: Codecov
         uses: codecov/codecov-action@v1.0.12
-      - name: Slack Notification
-        uses: 8398a7/action-slack@v3
+  slack:
+    name: Slack Notification
+    needs: build
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - uses: 8398a7/action-slack@v3
         with:
           status: custom
           fields: all
