@@ -30,8 +30,15 @@ jobs:
         uses: codecov/codecov-action@v1.0.12
       - uses: 8398a7/action-slack@v3
         with:
-          status: ${{ job.status }}
-          fields: repo,message,commit,action,eventName,ref,workflow,took
+          status: custom
+          fields: all
+          custom_payload: |
+            {
+              attachments: [{
+                color: '${{ job.status }}' === 'success' ? 'good' : '${{ job.status }}' === 'failure' ? 'danger' : 'warning',
+                ext: `**${process.env.AS_REPO}** | ${process.env.AS_REF} | ${process.env.AS_EVENT_NAME}\n${process.env.AS_COMMIT} ${process.env.AS_MESSAGE}\n${{ job.status }} | ${process.env.AS_TOOK} | ${process.env.AS_WORKFLOW} ${process.env.AS_JOB}`,
+              }]
+            }
         env:
           GITHUB_TOKEN: ${{ github.token }}
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
