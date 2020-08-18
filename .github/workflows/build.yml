@@ -8,6 +8,7 @@ on:
 
 jobs:
   build:
+    name: ${{ matrix.os }} - Node.js - ${{ matrix.node-version }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
