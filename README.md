@@ -1,7 +1,7 @@
 # Unofficial Taipei Veterans General Hospital Medical Library Collection API
 
 [![NPM version](https://img.shields.io/npm/v/@flowereatfish/tvgh-library-collection-api.svg)](https://www.npmjs.com/package/@flowereatfish/tvgh-library-collection-api)
-[![Actions status](https://github.com/FlowerEatFish/tvgh-library-collection-api/workflows/build/badge.svg)](https://github.com/FlowerEatFish/tvgh-library-collection-api/actions)
+[![Actions status](https://github.com/FlowerEatFish/tvgh-library-collection-api/workflows/build/badge.svg?branch=master)](https://github.com/FlowerEatFish/tvgh-library-collection-api/actions)
 [![Codecov status](https://codecov.io/gh/FlowerEatFish/tvgh-library-collection-api/branch/master/graph/badge.svg)](https://codecov.io/gh/FlowerEatFish/tvgh-library-collection-api/commits)
 [![Dependencies status](https://david-dm.org/FlowerEatFish/tvgh-library-collection-api/status.svg)](https://david-dm.org/FlowerEatFish/tvgh-library-collection-api)
 [![Code style](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://prettier.io/)
