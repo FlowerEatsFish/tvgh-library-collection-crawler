@@ -28,7 +28,8 @@ jobs:
       - run: yarn test
       - name: Codecov
         uses: codecov/codecov-action@v1.0.12
-      - uses: 8398a7/action-slack@v3
+      - name: Slack Notification
+        uses: 8398a7/action-slack@v3
         with:
           status: custom
           fields: all
