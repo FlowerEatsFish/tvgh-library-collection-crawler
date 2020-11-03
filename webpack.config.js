@@ -1,5 +1,5 @@
 const { BannerPlugin } = require("webpack");
-const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
+const TerserPlugin = require('terser-webpack-plugin');
 const path = require("path");
 const packageInfo = require("./package.json");
 
@@ -31,20 +31,22 @@ const commonConfig = {
   },
   plugins: [
     new BannerPlugin({
-      banner: `Repository: ${packageInfo.name} | Version: ${packageInfo.version} | Author: ${packageInfo.author} | License: ${packageInfo.license}`,
+      banner: `@banner Repository: ${packageInfo.name} | Version: ${packageInfo.version} | Author: ${packageInfo.author} | License: ${packageInfo.license}`,
     }),
   ],
 };
 
 const prodConfig = {
   optimization: {
+    minimize: true,
     minimizer: [
-      new UglifyJSPlugin({
-        uglifyOptions: {
-          compress: {
-            drop_console: true,
+      new TerserPlugin({
+        terserOptions: {
+          output: {
+              comments: /@banner/i,
           },
         },
+        extractComments: false,
       }),
     ],
   },
