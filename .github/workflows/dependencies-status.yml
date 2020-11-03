@@ -1,0 +1,20 @@
+name: dependencies status
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+  schedule:
+    - cron: 0 8 5,15,25 * *
+
+jobs:
+  dependencies-status:
+    name: Dependencies Status
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12]
+    steps:
+      - run: yarn global add npm-check
+      - run: npm-check -p
