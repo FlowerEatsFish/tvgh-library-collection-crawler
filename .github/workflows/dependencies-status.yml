@@ -1,4 +1,4 @@
-name: dependencies status
+name: dependencies-status
 
 on:
   push:
@@ -12,9 +12,11 @@ jobs:
   dependencies-status:
     name: Dependencies Status
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [12]
     steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js 12
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
       - run: yarn global add npm-check
       - run: npm-check -p
