@@ -19,5 +19,5 @@ jobs:
         with:
           node-version: 12
       - run: sudo yarn global add npm-check
-      - run: yarn install --production --skip-unused
-      - run: npm-check -p
+      - run: yarn install --production
+      - run: npm-check --production --skip-unused
