@@ -1,6 +1,6 @@
 # Taipei Veterans General Hospital Medical Library Collection Crawler
 
-[![NPM version](https://img.shields.io/npm/v/@flowereatsfish/tvgh-library-collection-crawler.svg)](https://www.npmjs.com/package/@flowereatsfish/tvgh-library-collection-crawler)
+[![NPM version](https://img.shields.io/npm/v/tvgh-library-collection-crawler.svg)](https://www.npmjs.com/package/tvgh-library-collection-crawler)
 [![Actions status](https://github.com/FlowerEatsFish/tvgh-library-collection-crawler/workflows/build/badge.svg?branch=master)](https://github.com/FlowerEatsFish/tvgh-library-collection-crawler/actions)
 [![Codecov status](https://codecov.io/gh/FlowerEatsFish/tvgh-library-collection-crawler/branch/master/graph/badge.svg)](https://codecov.io/gh/FlowerEatsFish/tvgh-library-collection-crawler/commits)
 [![Dependencies status](https://github.com/FlowerEatsFish/tvgh-library-collection-crawler/workflows/dependencies-status/badge.svg?branch=master)](https://github.com/FlowerEatsFish/tvgh-library-collection-crawler/actions)
@@ -31,13 +31,13 @@
 - NPM
 
 ```shell
-npm install @flowereatsfish/tvgh-library-collection-crawler --save
+npm install tvgh-library-collection-crawler --save
 ```
 
 - Yarn
 
 ```shell
-yarn add @flowereatsfish/tvgh-library-collection-crawler
+yarn add tvgh-library-collection-crawler
 ```
 
 ## Usage
@@ -45,7 +45,7 @@ yarn add @flowereatsfish/tvgh-library-collection-crawler
 ### Node.js version 8 or higher (with full Async/Await support)
 
 ```javascript
-const tvghLibraryCollectionCrawler = require('@flowereatsfish/tvgh-library-collection-crawler');
+const tvghLibraryCollectionCrawler = require('tvgh-library-collection-crawler');
 
 const run = async () => {
   const results = await tvghLibraryCollectionCrawler('橡皮擦計畫');
@@ -58,7 +58,7 @@ run();
 ### Others
 
 ```javascript
-const tvghLibraryCollectionCrawler = require('@flowereatsfish/tvgh-library-collection-crawler');
+const tvghLibraryCollectionCrawler = require('tvgh-library-collection-crawler');
 
 tvghLibraryCollectionCrawler('橡皮擦計畫')
   .then(results => console.log(results));
@@ -125,7 +125,7 @@ null
 ### Input parameters
 
 ```javascript
-import tvghLibraryCollectionCrawler from '@flowereatsfish/tvgh-library-collection-crawler';
+import tvghLibraryCollectionCrawler from 'tvgh-library-collection-crawler';
 
 const result = tvghLibraryCollectionCrawler(
   keyword, // string. Necessary.
