@@ -15,20 +15,13 @@
     "lint:fix": "eslint . -f stylish --ext .js --ext .ts --fix",
     "test": "jest --coverage --silent"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/FlowerEatsFish/tvgh-library-collection-crawler.git"
-  },
-  "keywords": [
-    "api",
-    "web-crawler"
-  ],
+  "repository": "git@github.com:FlowerEatsFish/tvgh-library-collection-crawler.git",
   "author": "Eating-Fish Flower",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/FlowerEatsFish/tvgh-library-collection-crawler/issues"
-  },
-  "homepage": "https://github.com/FlowerEatsFish/tvgh-library-collection-crawler#readme",
+  "private": false,
+  "keywords": [
+    "web-crawler"
+  ],
   "dependencies": {
     "axios": "^0.21.1"
   },
