@@ -24,7 +24,7 @@
 
 ## Requirements
 
-- This construct uses [Axios.js](https://github.com/axios/axios), so you need to care the Cross-Origin Requests (CORS).
+- This construct uses XHR such as [Axios.js](https://github.com/axios/axios), so you need to care about the Cross-Origin Requests (CORS) if you use this construct in web browsers rather than Node.js.
 
 ## Installations
 
