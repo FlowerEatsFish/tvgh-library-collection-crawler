@@ -28,6 +28,6 @@ export type TvghLibraryCollectionFunction = (
   libraryNumbering?: number,
 ) => Promise<DetailType | DetailType[] | null>;
 
-declare const tvghLibraryCollectionApi: TvghLibraryCollectionFunction;
+declare const tvghLibraryCollectionCrawler: TvghLibraryCollectionFunction;
 
-export default tvghLibraryCollectionApi;
+export default tvghLibraryCollectionCrawler;

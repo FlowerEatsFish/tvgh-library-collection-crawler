@@ -1,15 +1,15 @@
-# Unofficial Taipei Veterans General Hospital Medical Library Collection API
+# Taipei Veterans General Hospital Medical Library Collection Crawler
 
-[![NPM version](https://img.shields.io/npm/v/@flowereatsfish/tvgh-library-collection-api.svg)](https://www.npmjs.com/package/@flowereatsfish/tvgh-library-collection-api)
-[![Actions status](https://github.com/FlowerEatsFish/tvgh-library-collection-api/workflows/build/badge.svg?branch=master)](https://github.com/FlowerEatsFish/tvgh-library-collection-api/actions)
-[![Codecov status](https://codecov.io/gh/FlowerEatsFish/tvgh-library-collection-api/branch/master/graph/badge.svg)](https://codecov.io/gh/FlowerEatsFish/tvgh-library-collection-api/commits)
-[![Dependencies status](https://github.com/FlowerEatsFish/tvgh-library-collection-api/workflows/dependencies-status/badge.svg?branch=master)](https://github.com/FlowerEatsFish/tvgh-library-collection-api/actions)
+[![NPM version](https://img.shields.io/npm/v/@flowereatsfish/tvgh-library-collection-crawler.svg)](https://www.npmjs.com/package/@flowereatsfish/tvgh-library-collection-crawler)
+[![Actions status](https://github.com/FlowerEatsFish/tvgh-library-collection-crawler/workflows/build/badge.svg?branch=master)](https://github.com/FlowerEatsFish/tvgh-library-collection-crawler/actions)
+[![Codecov status](https://codecov.io/gh/FlowerEatsFish/tvgh-library-collection-crawler/branch/master/graph/badge.svg)](https://codecov.io/gh/FlowerEatsFish/tvgh-library-collection-crawler/commits)
+[![Dependencies status](https://github.com/FlowerEatsFish/tvgh-library-collection-crawler/workflows/dependencies-status/badge.svg?branch=master)](https://github.com/FlowerEatsFish/tvgh-library-collection-crawler/actions)
 [![Code style](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://prettier.io/)
 [![License MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-非官方臺北榮民總醫院醫學圖書館 API
+臺北榮民總醫院醫學圖書館館藏資料爬蟲
 
-- [Unofficial Taipei Veterans General Hospital Medical Library Collection API](#Unofficial-Taipei-Veterans-General-Hospital-Medical-Library-Collection-API)
+- [Taipei Veterans General Hospital Medical Library Collection Crawler](#Unofficial-Taipei-Veterans-General-Hospital-Medical-Library-Collection-Crawler)
   - [Requirements](#Requirements)
   - [Installations](#Installations)
   - [Usage](#Usage)
@@ -31,13 +31,13 @@
 - NPM
 
 ```shell
-npm install @flowereatsfish/tvgh-library-collection-api --save
+npm install @flowereatsfish/tvgh-library-collection-crawler --save
 ```
 
 - Yarn
 
 ```shell
-yarn add @flowereatsfish/tvgh-library-collection-api
+yarn add @flowereatsfish/tvgh-library-collection-crawler
 ```
 
 ## Usage
@@ -45,10 +45,10 @@ yarn add @flowereatsfish/tvgh-library-collection-api
 ### Node.js version 8 or higher (with full Async/Await support)
 
 ```javascript
-const tvghLibraryCollectionApi = require('@flowereatsfish/tvgh-library-collection-api');
+const tvghLibraryCollectionCrawler = require('@flowereatsfish/tvgh-library-collection-crawler');
 
 const run = async () => {
-  const results = await tvghLibraryCollectionApi('橡皮擦計畫');
+  const results = await tvghLibraryCollectionCrawler('橡皮擦計畫');
   console.log(results);
 };
 
@@ -58,9 +58,9 @@ run();
 ### Others
 
 ```javascript
-const tvghLibraryCollectionApi = require('@flowereatsfish/tvgh-library-collection-api');
+const tvghLibraryCollectionCrawler = require('@flowereatsfish/tvgh-library-collection-crawler');
 
-tvghLibraryCollectionApi('橡皮擦計畫')
+tvghLibraryCollectionCrawler('橡皮擦計畫')
   .then(results => console.log(results));
 ```
 
@@ -70,8 +70,8 @@ tvghLibraryCollectionApi('橡皮擦計畫')
 
 ```shell
 # To download the files and install packages.
-$ git clone https://github.com/FlowerEatsFish/tvgh-library-collection-api.git
-$ cd tvgh-library-collection-api
+$ git clone https://github.com/FlowerEatsFish/tvgh-library-collection-crawler.git
+$ cd tvgh-library-collection-crawler
 $ yarn install # npm install
 
 # To run a demo.
@@ -125,9 +125,9 @@ null
 ### Input parameters
 
 ```javascript
-import tvghLibraryCollectionApi from '@flowereatsfish/tvgh-library-collection-api';
+import tvghLibraryCollectionCrawler from '@flowereatsfish/tvgh-library-collection-crawler';
 
-const result = tvghLibraryCollectionApi(
+const result = tvghLibraryCollectionCrawler(
   keyword, // string. Necessary.
            // If you set it as null, it will get an error.
   page, // number. Positive integer. Default: 1.

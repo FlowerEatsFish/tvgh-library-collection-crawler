@@ -9,12 +9,12 @@ const PRODUCTION = "production";
 const commonConfig = {
   mode: process.env.NODE_ENV,
   entry: {
-    "tvgh-library-collection-api": "./src/index.ts",
+    "tvgh-library-collection-crawler": "./src/index.ts",
   },
   output: {
     path: path.join(__dirname, "dist"),
     filename: process.env.NODE_ENV === PRODUCTION ? "./[name].min.js" : "./[name].js",
-    library: "tvgh-library-collection-api",
+    library: "tvgh-library-collection-crawler",
     libraryTarget: "umd",
   },
   module: {
