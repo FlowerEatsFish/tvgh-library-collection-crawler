@@ -8,11 +8,11 @@ on:
 
 jobs:
   build:
-    name: ${{ matrix.os }} - Node.js - ${{ matrix.node-version }}
+    name: Ubuntu NodeJS v${{ matrix.node-version }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [windows-latest, macos-latest, ubuntu-latest]
+        os: [ubuntu-latest]
         node-version: [10, 12]
     steps:
       - uses: actions/checkout@v2
