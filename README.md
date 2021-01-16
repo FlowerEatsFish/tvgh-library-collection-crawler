@@ -1,8 +1,8 @@
 # Unofficial Taipei Veterans General Hospital Medical Library Collection API
 
-[![NPM version](https://img.shields.io/npm/v/@flowereatfish/tvgh-library-collection-api.svg)](https://www.npmjs.com/package/@flowereatfish/tvgh-library-collection-api)
-[![Actions status](https://github.com/FlowerEatFish/tvgh-library-collection-api/workflows/build/badge.svg?branch=master)](https://github.com/FlowerEatFish/tvgh-library-collection-api/actions)
-[![Codecov status](https://codecov.io/gh/FlowerEatFish/tvgh-library-collection-api/branch/master/graph/badge.svg)](https://codecov.io/gh/FlowerEatFish/tvgh-library-collection-api/commits)
+[![NPM version](https://img.shields.io/npm/v/@flowereatsfish/tvgh-library-collection-api.svg)](https://www.npmjs.com/package/@flowereatsfish/tvgh-library-collection-api)
+[![Actions status](https://github.com/FlowerEatsFish/tvgh-library-collection-api/workflows/build/badge.svg?branch=master)](https://github.com/FlowerEatsFish/tvgh-library-collection-api/actions)
+[![Codecov status](https://codecov.io/gh/FlowerEatsFish/tvgh-library-collection-api/branch/master/graph/badge.svg)](https://codecov.io/gh/FlowerEatsFish/tvgh-library-collection-api/commits)
 [![Dependencies status](https://github.com/FlowerEatsFish/tvgh-library-collection-api/workflows/dependencies-status/badge.svg?branch=master)](https://github.com/FlowerEatsFish/tvgh-library-collection-api/actions)
 [![Code style](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://prettier.io/)
 [![License MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
@@ -31,13 +31,13 @@
 - NPM
 
 ```shell
-npm install @flowereatfish/tvgh-library-collection-api --save
+npm install @flowereatsfish/tvgh-library-collection-api --save
 ```
 
 - Yarn
 
 ```shell
-yarn add @flowereatfish/tvgh-library-collection-api
+yarn add @flowereatsfish/tvgh-library-collection-api
 ```
 
 ## Usage
@@ -45,7 +45,7 @@ yarn add @flowereatfish/tvgh-library-collection-api
 ### Node.js version 8 or higher (with full Async/Await support)
 
 ```javascript
-const tvghLibraryCollectionApi = require('@flowereatfish/tvgh-library-collection-api');
+const tvghLibraryCollectionApi = require('@flowereatsfish/tvgh-library-collection-api');
 
 const run = async () => {
   const results = await tvghLibraryCollectionApi('橡皮擦計畫');
@@ -58,7 +58,7 @@ run();
 ### Others
 
 ```javascript
-const tvghLibraryCollectionApi = require('@flowereatfish/tvgh-library-collection-api');
+const tvghLibraryCollectionApi = require('@flowereatsfish/tvgh-library-collection-api');
 
 tvghLibraryCollectionApi('橡皮擦計畫')
   .then(results => console.log(results));
@@ -70,7 +70,7 @@ tvghLibraryCollectionApi('橡皮擦計畫')
 
 ```shell
 # To download the files and install packages.
-$ git clone https://github.com/FlowerEatFish/tvgh-library-collection-api.git
+$ git clone https://github.com/FlowerEatsFish/tvgh-library-collection-api.git
 $ cd tvgh-library-collection-api
 $ yarn install # npm install
 
@@ -125,7 +125,7 @@ null
 ### Input parameters
 
 ```javascript
-import tvghLibraryCollectionApi from '@flowereatfish/tvgh-library-collection-api';
+import tvghLibraryCollectionApi from '@flowereatsfish/tvgh-library-collection-api';
 
 const result = tvghLibraryCollectionApi(
   keyword, // string. Necessary.

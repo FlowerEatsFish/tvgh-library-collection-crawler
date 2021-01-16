@@ -1,5 +1,5 @@
 {
-  "name": "@flowereatfish/tvgh-library-collection-api",
+  "name": "@flowereatsfish/tvgh-library-collection-api",
   "version": "1.1.0",
   "description": "Unofficial Taipei Veterans General Hospital Medical Library Collection API",
   "main": "index.js",
@@ -17,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/FlowerEatFish/tvgh-library-collection-api.git"
+    "url": "git+https://github.com/FlowerEatsFish/tvgh-library-collection-api.git"
   },
   "keywords": [
     "api",
@@ -26,9 +26,9 @@
   "author": "Eating-Fish Flower",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/FlowerEatFish/tvgh-library-collection-api/issues"
+    "url": "https://github.com/FlowerEatsFish/tvgh-library-collection-api/issues"
   },
-  "homepage": "https://github.com/FlowerEatFish/tvgh-library-collection-api#readme",
+  "homepage": "https://github.com/FlowerEatsFish/tvgh-library-collection-api#readme",
   "dependencies": {
     "axios": "^0.21.1"
   },
