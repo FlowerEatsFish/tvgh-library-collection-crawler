@@ -4,14 +4,12 @@ coverage/
 test/
 
 # hidden configs
-.yarn/
 .editorconfig
 .eslintignore
 .eslintrc
 .gitignore
 .prettierrc
 .travis.yml
-.yarnrc
 
 # configs
 appveyor.yml
