@@ -82,30 +82,30 @@ $ yarn start # npm start
 ### Results
 
 ```shell
->>> You search data using keyword "愛因斯坦的時空".
+>>> You search data using keyword "橡皮擦計畫".
 
 {
-  title: '愛因斯坦的時空',
-  author: '李家維',
-  isbn: null,
+  title: '橡皮擦計畫 : 兩位天才心理學家,一段改變世界的情誼',
+  author: 'Lewis, Michael,',
+  isbn: '9789866613944',
   issn: null,
-  edition: null,
-  pub_year: '2017[民106]',
-  pub_place: '臺北市 :',
-  pub_info: '臺北市 : 遠流, 2017[民106]',
-  shape: '159面 : 彩圖 ; 28公分',
+  edition: '初版',
+  pub_year: '2018',
+  pub_place: '台北市 : 早安財經文化有限公司,',
+  pub_info: null,
+  shape: '383面 ; 21公分',
   collection: [
     {
       library: '北榮',
       data_type: '*圖書',
       special_number: '',
-      barcode: '00000253432',
-      call_number: '331/8466/2017',
+      barcode: '00000253649',
+      call_number: '170.1/8857/2018',
       is_flow: true,
       status: '正在查詢...'
     }
   ],
-  url: 'http://tghtpe.ent.sirsidynix.net/client/zh_TW/vgh/search/results?qu=%E6%84%9B%E5%9B%A0%E6%96%AF%E5%9D%A6%E7%9A%84%E6%99%82%E7%A9%BA&rw=0&lm=VGHTPE'
+  url: 'http://tghtpe.ent.sirsidynix.net/client/zh_TW/vgh/search/results?qu=%E6%A9%A1%E7%9A%AE%E6%93%A6%E8%A8%88%E7%95%AB&rw=0&lm=VGHTPE'
 }
 ```
 

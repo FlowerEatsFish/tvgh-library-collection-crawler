@@ -7,9 +7,7 @@ describe("Run demo", (): void => {
   it(
     "Should get one result as Object",
     async (): Promise<void> => {
-      const result: DetailType | DetailType[] | null = await tvghLibraryCollection(
-        "愛因斯坦的時空",
-      );
+      const result: DetailType | DetailType[] | null = await tvghLibraryCollection("橡皮擦計畫");
 
       expect(typeof result === "object" && result !== null && !Array.isArray(result)).toBeTruthy();
     },

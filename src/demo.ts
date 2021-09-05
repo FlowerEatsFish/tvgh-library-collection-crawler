@@ -5,7 +5,7 @@
 import tvghLibraryCollection from "./index";
 
 const demoKeywordList = [
-  "愛因斯坦的時空", // It will get one result as expected.
+  "橡皮擦計畫", // It will get one result as expected.
   "Alzheimer disease", // It will get more results on 12 ones per page as expected.
   "no-result-as-example", // It will be no result.
 ];
