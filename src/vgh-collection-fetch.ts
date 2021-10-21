@@ -36,7 +36,7 @@ const setUrl = (keyword: string, page: number, library: string): string => {
 
 const fetchFullHtmlCode = async (url: string): Promise<string | null> => {
   try {
-    const response = await axios.get(url);
+    const response = await axios.get<string>(url);
 
     return response.data;
   } catch (error) {
